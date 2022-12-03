@@ -38,9 +38,8 @@
       	.attr("height", height)
 				.call(d3.zoom().on("zoom", function () {
     			svg.attr("transform", d3.zoomTransform(this))
-  			}))
-			.append("g");
-			
+  			}).scaleExtent([1, 8]))
+			.append("g")
 
 		// https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson
 		// /data/censustracts_2010.geojson
@@ -59,7 +58,6 @@
   			.style("stroke-width", "0.5")
   			.style("stroke", "#575757")
 		});
-
 	});
 </script>
 
