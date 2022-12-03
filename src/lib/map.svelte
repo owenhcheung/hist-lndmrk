@@ -34,8 +34,13 @@
 
 		let svg = d3.select("#map")
       .append("svg")
-      .attr("width", width)
-      .attr("height", height);
+      	.attr("width", width)
+      	.attr("height", height)
+				.call(d3.zoom().on("zoom", function () {
+    			svg.attr("transform", d3.zoomTransform(this))
+  			}))
+			.append("g");
+			
 
 		// https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson
 		// /data/censustracts_2010.geojson
@@ -51,8 +56,8 @@
   			.append('path')
   			.attr('d', path)
   			.style("fill", "#0a0a0a")
-  			.style("stroke-width", "1")
-  			.style("stroke", "#575757");
+  			.style("stroke-width", "0.5")
+  			.style("stroke", "#575757")
 		});
 
 	});
