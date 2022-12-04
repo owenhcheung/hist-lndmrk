@@ -4,9 +4,7 @@
 </script>
 
 <main>
-  <div class="card">
-    <Map />
-  </div>
+  <Map />
 </main>
 
 <style>
