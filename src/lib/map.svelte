@@ -48,30 +48,16 @@
 			container: "map",
 			style: "mapbox://styles/mapbox/dark-v9", //mapbox theme
 			center: [-122.3321, 47.6062], // center on seattle
-			zoom: 11, // zoom level
+			zoom: 11.5, // zoom level
 			maxZoom: 14,
 			minZoom: 11,
+			maxPitch: 65,
 		});
-		
-		/*
-		let container = map.getCanvasContainer();
 
-		let svg = d3
-			.select(container)
-			.append("svg")
-			.attr("width", "100%")
-			.attr("height", "100%")
-			.call(
-				d3
-					.zoom()
-					.on("zoom", function () {
-						svg.attr("transform", d3.zoomTransform(this));
-					})
-					.scaleExtent([1, 8])
-			)
-			.style("position", "absolute")
-			.style("z-index", 2);
-		*/
+		d3.selectAll(".mapboxgl-canvas")
+      .style("opacity", 1)
+      .style("position", "absolute")
+			.style("left", 0)
 
 		// https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson test file
 		// /data/censustracts_2010.geojson
@@ -141,8 +127,9 @@
 				"fill-color": {
 					property: "UH_TEMP",
 					stops: [
-						[min, "#002837"],
-						[max, "#fff"],
+						[0, "#fff"],
+						[50, "#002837"],
+						[100, "#000"],
 					],
 				},
 				"fill-opacity": 0.5,
@@ -160,6 +147,56 @@
 				"line-width": 0.5,
 			},
 		});
+
+		const landmark_data = await d3.json("/data/landmarks.geojson")
+
+		function project(d) {
+			return map.project(new mapboxgl.LngLat(d[0], d[1]));
+		}
+			
+		function render() {
+			d3.selectAll(".circle")
+				.attr("cx", function(d) {
+					return project(d.geometry.coordinates).x;
+				})
+				.attr("cy", function(d) {
+					return project(d.geometry.coordinates).y;
+				});
+		}
+
+		// console.log(landmark_data.features["0"].geometry)
+
+		
+			let container = map.getCanvasContainer();
+
+			var svg = d3
+				.select(container)
+				.append("svg")
+				.attr("width", "100%")
+				.attr("height", "100%")
+				.style("position", "absolute")
+				.style("left", "0")
+				.style("z-index", 20);
+
+			console.log(container)
+
+			svg
+				.selectAll("circle")
+				.data(landmark_data.features)
+				.enter()
+				.append("circle")
+				.attr("class", "circle")
+				.attr("r", 5)
+				.style("opacity", 0.7)
+				.style("fill", "#fff");
+
+			render();
+		
+
+		
+		map.on("viewreset", render);
+    map.on("move", render);
+    map.on("moveend", render);
 	});
 </script>
 
