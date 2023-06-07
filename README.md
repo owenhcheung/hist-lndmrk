@@ -7,4 +7,6 @@ compares historic landmark designations in seattle vs. unaffordable housing by c
 
 version that was turned in for credit is in the presentation version folder
 
-to run the svelte/vite stuff runn pnpm i -> pnpm run dev
+to run the svelte/vite stuff run
+- pnpm i
+- pnpm run dev
