@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@rollup/plugin-html': ^1.0.1
   '@sveltejs/vite-plugin-svelte': ^1.1.0
   colorbrewer: ^1.5.3
   d3: ^7.6.1
@@ -22,6 +23,7 @@ dependencies:
   topojson-client: 3.1.0
 
 devDependencies:
+  '@rollup/plugin-html': 1.0.1
   '@sveltejs/vite-plugin-svelte': 1.3.1_svelte@3.53.1+vite@3.2.4
   svelte: 3.53.1
   vite: 3.2.4
@@ -85,6 +87,16 @@ packages:
     resolution: {integrity: sha512-Es6WcD0nO5l+2BOQS4uLfNPYQaNDfbot3X1XUoloz+x0mPDS3eeORZJl06HXjwBG1fOGwCRnzK88LMdxKRrd6Q==}
     engines: {node: '>=6.0.0'}
     dev: false
+
+  /@rollup/plugin-html/1.0.1:
+    resolution: {integrity: sha512-ex4qCaauEhrhYTlFaW/D1Y66I/qL8Uu04FWFR+eQgjOtRCegMtscn69fS6ZGeL1GG6qCFdV8DTaP911uyMycWw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dev: true
 
   /@sveltejs/vite-plugin-svelte/1.3.1_svelte@3.53.1+vite@3.2.4:
     resolution: {integrity: sha512-2Uu2sDdIR+XQWF7QWOVSF2jR9EU6Ciw1yWfYnfLYj8HIgnNxkh/8g22Fw2pBUI8QNyW/KxtqJUWBI+8ypamSrQ==}

@@ -197,6 +197,8 @@
 		map.on("viewreset", render);
     map.on("move", render);
     map.on("moveend", render);
+
+		
 	});
 </script>
 
@@ -205,7 +207,7 @@
 <style>
 	#map {
 		position: relative;
-		width: 50%;
+		width: 100%;
 		height: 100%;
 		z-index: 0;
 		border-right: 1px black solid;
